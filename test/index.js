@@ -56,6 +56,19 @@ describe('copy', function () {
     t.deepStrictEqual(target.getMonth(), 0)
     t.deepStrictEqual(copy.getMonth(), 5)
   })
+
+  it('set', function () {
+    var target = new Set()
+    target.add(1)
+    var copy = dcopy(target)
+    t.deepStrictEqual(target, copy)
+
+    target.add(2)
+    t.notDeepStrictEqual(target, copy)
+
+    t.equal(true, target.has(1))
+    t.equal(false, copy.has(2))
+  })
 })
 
 
